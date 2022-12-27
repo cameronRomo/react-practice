@@ -1,5 +1,4 @@
 import './App.css';
-import _ from "lodash"
 
 import Layout from './components/Layout'
 

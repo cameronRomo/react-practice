@@ -41,8 +41,8 @@ export default class Layout extends React.Component {
     return (
       <header>
         <h1>Welcome to my site!</h1>
-        <h2>Happy to have you here,</h2><br></br>
-        <h2>{this.state.firstName} :)</h2>
+        <h2>Happy to have you here,</h2>
+        <h2>{this.state.firstName} :D</h2>
         <Button handleClick={this.changeName} buttonName={this.state.firstName} />
         <p>{lorem.generateParagraphs(2)}</p>
        

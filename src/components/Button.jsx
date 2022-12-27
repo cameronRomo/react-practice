@@ -1,13 +1,7 @@
 import React from 'react';
 
-export default class Button extends React.Component {
-  constructor() {
-    super();
-  }
+const Button = ({handleClick, buttonName}) => (
+  <button onClick={handleClick}>{buttonName}</button>
+);
 
-  render() {
-    return (
-      <button onClick={this.props.changeName}>{this.props.firstName}</button>
-    )
-  }
-}
+export default Button;

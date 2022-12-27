@@ -1,6 +1,8 @@
 import React from 'react';
 import { LoremIpsum } from 'lorem-ipsum';
 
+import Button from './Button';
+
 const lorem = new LoremIpsum({
   sentencesPerParagraph: {
     max: 8,
@@ -33,7 +35,7 @@ export default class Layout extends React.Component {
         <h1>Welcome to my site!</h1>
         <h2>Happy to have you here,</h2><br></br>
         <h2>{this.state.firstName} :)</h2>
-        <button onClick={this.changeName} >Change me!</button>
+        <Button changeName={this.changeName} firstName={this.state.firstName} />
         <p>{lorem.generateParagraphs(2)}</p>
       </header>
     )

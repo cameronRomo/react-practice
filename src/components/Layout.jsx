@@ -2,6 +2,7 @@ import React from 'react';
 import { LoremIpsum } from 'lorem-ipsum';
 
 import Button from './Button';
+import Timer from './Timer';
 
 const lorem = new LoremIpsum({
   sentencesPerParagraph: {
@@ -35,8 +36,11 @@ export default class Layout extends React.Component {
         <h1>Welcome to my site!</h1>
         <h2>Happy to have you here,</h2><br></br>
         <h2>{this.state.firstName} :)</h2>
-        <Button changeName={this.changeName} firstName={this.state.firstName} />
+        <Button handleClick={this.changeName} buttonName={this.state.firstName} />
         <p>{lorem.generateParagraphs(2)}</p>
+        <Timer />
+        <Timer />
+        <Timer />
       </header>
     )
   }

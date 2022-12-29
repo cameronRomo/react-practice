@@ -1,5 +1,5 @@
 import './App.css';
-import names from '../public/mock-data';
+import names from './mock-data';
 
 import Layout from './components/Layout'
 

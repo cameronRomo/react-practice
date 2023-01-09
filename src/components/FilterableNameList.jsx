@@ -2,7 +2,7 @@ import React from 'react';
 
 import _ from 'lodash'
 
-export default class NameList extends React.Component {
+export default class FilterableNameList extends React.Component {
   constructor() {
     super();
     this.sate = {

@@ -1,13 +1,14 @@
 import React from 'react';
 
-import _ from 'lodash'
+import NameRow from './NameList/NameRow';
+import _ from 'lodash';
 
 export default class FilterableNameList extends React.Component {
   constructor() {
     super();
     this.sate = {
       names: [],
-      filterText: ""
+      filterText: "",
     }
   }
   
@@ -17,27 +18,31 @@ export default class FilterableNameList extends React.Component {
     })
   }
   
-  handleClick = (e) => {
-    e.preventDefault();
+  handleChange = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
   }
   
-  nameFilter = (e) => {
-    this.setState({
-      filterText: e.target.value
-    })
-  }
-
-  handleBlur = () => {
-    let {filterText, names} = this.state;
-    if (filterText.length >= 3) {
-      let filteredNames = _.filter(names, (name) => {
+  handleSubmit = (e) => {
+    e.preventDefault();
+    if (this.state.filterText.length >= 3) {
+      let filteredNames = _.filter(this.state.names, (name) => {
         let fullName = `${name.first_name} ${name.last_name}`
-        return fullName.toLowerCase().includes(filterText.toLowerCase());
+        return fullName.toLowerCase().includes(this.state.filterText.toLowerCase());
       })
       this.setState({
         names: filteredNames
       })
     }
+  }
+
+  clearInput = (e) => {
+    e.preventDefault();
+    this.setState({
+      names: this.props.names,
+      filterText: ""
+    });
   }
   
   render() {
@@ -45,11 +50,13 @@ export default class FilterableNameList extends React.Component {
 
     return (
       <section>
-        <form onBlur={this.handleBlur}>
-          <input type='text' onChange={this.nameFilter}/>
+        <form onSubmit={this.handleSubmit}>
+          <input type='text' name="filterText" value={this.state.filterText} onChange={e => this.handleChange(e)}/>
+          <input type='submit' value="Submit" />
+          <input type='reset' value="Reset" onClick={this.clearInput} />
         </form>
         {_.map(names, (name) => (
-          <h2 key={name.first_name}><a href='#' onClick={this.handleClick}>{name.first_name} {name.last_name}</a></h2>
+          <NameRow key={name.id} name={name} />
         ))}
       </section>
     )

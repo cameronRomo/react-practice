@@ -23,7 +23,7 @@ export default class Layout extends React.Component {
   render() {
     return (
       <header>
-        <h1>Welcome to my site!</h1>
+        <H1Styler>Welcome to my site!</H1Styler>
         <h2>Happy to have you here,</h2>
         <p>{lorem.generateParagraphs(2)}</p>
         <Timer />
@@ -32,3 +32,7 @@ export default class Layout extends React.Component {
     )
   }
 }
+
+const H1Styler = (props) => (
+  <h1>{props.children}</h1>
+)

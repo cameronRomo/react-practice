@@ -2,7 +2,7 @@ import React from 'react';
 import { LoremIpsum } from 'lorem-ipsum';
 
 import Timer from './timer/Timer';
-import NameList from './NameList';
+import FilterableNameList from './FilterableNameList';
 
 const lorem = new LoremIpsum({
   sentencesPerParagraph: {
@@ -27,7 +27,7 @@ export default class Layout extends React.Component {
         <h2>Happy to have you here,</h2>
         <p>{lorem.generateParagraphs(2)}</p>
         <Timer />
-        <NameList names={this.props.names} />
+        <FilterableNameList names={this.props.names} />
       </header>
     )
   }
